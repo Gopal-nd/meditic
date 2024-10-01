@@ -14,7 +14,7 @@ const NavbarProfile: FC<NavbarProfileProps> = ({}) => {
     const {data:session} = useSession()
     
   return (
-    <>
+    
     <div className="flex justify-end items-center gap-2 md:gap-4">
           <ModeToggle />
 
@@ -22,14 +22,14 @@ const NavbarProfile: FC<NavbarProfileProps> = ({}) => {
           {session ? (
             <UserAccounNav user={session.user} />
           ) : (
-            <>
+            
               <Link href={"/sign-in"} className={buttonVariants()}>
                 Sign In
               </Link>
-            </>
+            
           )}
         </div>
-    </>
+    
   )
 }
 

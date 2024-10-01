@@ -29,9 +29,9 @@ export default function Component({children}:{children:React.ReactNode}) {
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <div className="flex items-center justify-between h-16 px-6 border-b  ">
+        <div className="flex items-center justify-between h-16 px-6 border-b   ">
         <Link href={"/"} className="flex gap-2 items-center">
-          <Icons.logo className="w-10 h-10 sm:h-6 sm:w-6 dark:text-white bg-white" />
+          <Icons.logo className="w-10 h-10 sm:h-6 sm:w-6 " />
           <p className="hidden text-zinx-700 text-lg font-medium md:flex">
             Meditic
           </p>
@@ -58,24 +58,28 @@ export default function Component({children}:{children:React.ReactNode}) {
       {/* Main content */}
       <div className="flex-1 lg:ml-64">
         {/* Top bar for mobile */}
-        <header className="flex items-center justify-between h-16 px-6 border-b bg-white lg:hidden">
+        <header className="flex items-center justify-between h-16 px-6 border-b lg:hidden">
         <Link href={"/dashboard"} className="flex gap-2 items-center">
-          <Icons.logo className="w-10 h-10 sm:h-6 sm:w-6 dark:text-white bg-white" />
+          <Icons.logo className="w-10 h-10 sm:h-6 sm:w-6 " />
           <p className="hidden text-zinx-700 text-lg font-medium md:flex">
             Meditic
           </p>
         </Link>
+        <div className='flex justify-end gap-4'>
+
           <button onClick={toggleSidebar}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
+          <NavbarProfile />
+        </div>
         </header>
 
         
 
         {/* // main content  */}
-        <div className='hidden md:block border-b min-h-16 p-2 items-center'>
+        <div className='hidden lg:block border-b min-h-16 p-2 items-center'>
         <NavbarProfile />
         </div>
         <div className='p-2'>
