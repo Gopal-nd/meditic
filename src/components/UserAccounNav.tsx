@@ -18,21 +18,21 @@ const UserAccounNav: FC<UserAccounNavProps> = ({ user }) => {
           user={{ name: user.name || null, image: user.image || null }}
         />
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="bg-white" align="end">
+      <DropdownMenuContent className="" align="end">
         <div className="flex p-2 items-center justify-start gap-2">
             <div className="flex flex-col space-y-1 leading-none">
                 {user.name && <p className="font-medium">{user.name}</p>}
-                {user.email&& <p className="w-[200px] text-sm text-zinc-700">
+                {user.email&& <p className="w-[200px] text-sm ">
                     {user.email}
                 </p>}
             </div>
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href={`/appointment`}>Appointment </Link>
+          <Link href={`/dashboard/appointment`}>Appointment </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href={`/details`}>Your Details</Link>
+          <Link href={`/dashboard/details`}>Your Details</Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onSelect={(event)=>{

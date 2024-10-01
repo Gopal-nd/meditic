@@ -2,9 +2,15 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { CardContent, Card } from "@/components/ui/card"
+import Navbar from "@/components/Navbar"
 
 export default function HomePage() {
   return (
+
+    <>
+
+<Navbar />
+
     <div className="flex flex-col max-w-7xl mx-auto min-h-screen">
     
       <main className="flex-1">
@@ -157,6 +163,7 @@ export default function HomePage() {
         </nav>
       </footer>
     </div>
+    </>
   )
 }
 

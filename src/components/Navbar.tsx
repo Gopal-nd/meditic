@@ -4,6 +4,7 @@ import { buttonVariants } from "./ui/button";
 import { getAuthSession } from "@/lib/auth";
 import UserAccounNav from "./UserAccounNav";
 import { ModeToggle } from "./ModeToggle";
+import NavbarProfile from "./NavbarProfile";
 
 const Navbar = async () => {
   const session = await getAuthSession();

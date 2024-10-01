@@ -59,7 +59,7 @@ export const authOptions:NextAuthOptions = {
             }
         },
         redirect(){
-            return "/"
+            return "/dashboard"
         }
     },
     secret:process.env.NEXTAUTH_SECRET ??'meditic',
