@@ -1,7 +1,7 @@
 
 import React ,{FC} from 'react'
-import SignIn from "../../../components/SignIn"
 import CloseModal from '../../../components/CloseModal'
+import SignUp from '@/components/SignUp'
 interface pageProps {
   
 }
@@ -14,7 +14,7 @@ const page: FC<pageProps> = ({}) => {
                 <div className="absolute top-4 right-4">
                     <CloseModal/>
                 </div>
-                <SignIn/>
+                <SignUp/>
             </div>
         </div>
     </div>
