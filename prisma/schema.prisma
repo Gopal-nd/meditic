@@ -46,7 +46,7 @@ model User {
   name              String?
   email             String?        @unique
   emailVerified     DateTime?
-
+  role                Role @default(PATIENT)
   username String? @unique
 
   image       String?
@@ -54,17 +54,44 @@ model User {
   sessions    Session[]
   // One-to-One relation to patient details
   patientDetails PatientDetails[]
+
+  Appointment Appointment[]
 }
 
 model PatientDetails {
   id             String   @id @default(cuid())
-  userId         String   
-  gender         String?
+  email         String   
+  gender         String
   dateOfBirth    DateTime?
   age            Int?
   medicalHistory String?
   
-  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user           User     @relation(fields: [email], references: [email], onDelete: Cascade)
 }
 
 
+model Appointment {
+  id String @id @default(cuid())
+    email        String   // Foreign key to User (Patient)
+  patient          User     @relation(fields: [email], references: [email], onDelete: Cascade)
+  specialization   String   // The specialization chosen, e.g., 'Cardiology'
+  problem          String   // Patient's reason for booking the appointment
+  appointmentTime  DateTime // The date and time of the appointment
+  createdAt        DateTime @default(now()) // Auto-generated creation timestamp
+  status           AppointmentStatus @default(PENDING) // Status of the appointment
+  
+  @@index([email])
+}
+
+enum AppointmentStatus {
+  PENDING  // Appointment created but not yet approved
+  ACCEPTED // Appointment has been accepted
+  REJ
+}
+
+
+enum Role {
+  PATIENT  // Appointment created but not yet approved
+  DOCTER // Appointment has been accepted
+  
+}

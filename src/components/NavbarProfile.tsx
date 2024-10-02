@@ -2,16 +2,20 @@ import { FC } from 'react'
 import { ModeToggle } from './ModeToggle'
 import { getAuthSession } from '@/lib/auth'
 import UserAccounNav from './UserAccounNav'
-import { Link } from 'lucide-react'
+
 import { buttonVariants } from './ui/button'
+import Link from 'next/link'
+import { db } from '@/lib/db'
 import { useSession } from 'next-auth/react'
 
 interface NavbarProfileProps {
   
 }
 
-const NavbarProfile: FC<NavbarProfileProps> = ({}) => {
+const NavbarProfile: FC<NavbarProfileProps> = async({}) => {
     const {data:session} = useSession()
+
+  
     
   return (
     

@@ -36,7 +36,7 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({ patientId }) => {
     e.preventDefault();
 
     const appointment: Appointment = {
-      patientId,
+      specialization,
       problem,
       appointmentTime: new Date(appointmentTime),
     };

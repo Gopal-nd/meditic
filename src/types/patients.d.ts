@@ -8,7 +8,7 @@ export interface PatientDetails {
 
 
   export interface Appointment {
-    patientId: string; // ID of the patient
+    specialization: string; // ID of the patient
     problem: string;   // Problem for which the appointment is requested
     appointmentTime: Date | null; // Date and time for the appointment
   }

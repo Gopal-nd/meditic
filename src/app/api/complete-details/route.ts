@@ -15,19 +15,23 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Appointment time is required' }, { status: 400 });
     }
 
-    const newAppointment = await db.appointment.create({
-      data: {
-        appointmentTime: new Date(appointment.appointmentTime),
-        email:session.user.email,
-        problem: appointment.problem,
-        specialization: appointment.specialization,
-        status: "PENDING"
+    const allAppointment = await db.appointment.findMany({
+        where:{
+            email: session?.user?.email,
+        },
+      select: {
+       appointmentTime:true,
+       createdAt:true,
+       problem:true,
+       specialization:true,
+       status:true
       },
     });
+    console.log(  "the following data", allAppointment)
 
-    return NextResponse.json({ newAppointment: "newAppointment" });
+    return NextResponse.json({ AllAppoinments: allAppointment }, { status: 200 });
   } catch (error) {
-    console.error('Error creating appointment:', error);
-    return NextResponse.json({ error: 'Error creating appointment' }, { status: 500 });
+    console.error('Error in getting appointment:', error);
+    return NextResponse.json({ error: 'Error in getting list appointment' }, { status: 500 });
   }
 }

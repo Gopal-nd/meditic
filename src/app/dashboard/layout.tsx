@@ -2,12 +2,16 @@
 
 import { Icons } from '@/components/Icons'
 import NavbarProfile from '@/components/NavbarProfile'
+import { useSession } from 'next-auth/react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React,{ useState } from 'react'
 
 export default function Component({children}:{children:React.ReactNode}) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
-
+  const router = useRouter()
+  const user = useSession()
+  if(!user) return router.push('/sign-in')
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen)
   }
@@ -20,6 +24,8 @@ export default function Component({children}:{children:React.ReactNode}) {
     { href: '/prescriptions', label: 'Digital Prescriptions' },
     { href: '/reminders', label: 'Medication Reminders' },
   ]
+
+
 
   return (
     <div className="flex h-screen">
